@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HeaderButtons = ({children}) => {
+const HeaderButton = ({children}) => {
     return (
         <button className="hover:underline cursor-pointer">
             {children}
@@ -8,4 +8,4 @@ const HeaderButtons = ({children}) => {
     );
 };
 
-export default HeaderButtons;
+export default HeaderButton;
