@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Button from "../../ui/Button/Button.jsx";
 
-const NewsButtons = () => {
+const NewsButtons = ({selectedHashtags, setSelectedHashtags}) => {
     const hashtags = [
         '#Спорт', '#Отдых', '#Здоровье', '#ЖКХ', '#Культура',
         '#Социально-бытовой комитет', '#Образование',
@@ -10,22 +10,27 @@ const NewsButtons = () => {
     ];
 
     const [hashtag, setHashtag] = useState([])
+    console.log(`Array: ${hashtag}`)
 
     const handleClick = (event, btn) => {
         event.preventDefault();
-        console.log(`Clicked: ${btn}`)
+
         if (hashtag.includes(btn)) {
             const newArray = hashtag.filter(prev => prev !== btn)
+
             setHashtag(newArray);
+            setSelectedHashtags(newArray)
+
             return
         }
+
         setHashtag([...hashtag, btn])
+        setSelectedHashtags([...selectedHashtags, btn])
     }
 
     return (
-        <div>
-            <section className="w-200 mt-10 mb-10">
-                <h1>Выбранные хэштеги: {hashtag}</h1>
+        <div className="mt-10 mb-10">
+            <section className="w-200 text-center">
                 {hashtags.map((btn, index) => (
                     <Button key={index + 1} onClick={(event) => handleClick(event, btn)} isActive={hashtag.includes(btn)}>{btn}</Button>
                 ))}
