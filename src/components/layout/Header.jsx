@@ -16,7 +16,6 @@ const Header = () => {
                 </ul>
                 <div className="bg-[#666666] w-[110%] h-1 mt-3"></div>
             </nav>
-
         </header>
     );
 };
