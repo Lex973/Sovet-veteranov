@@ -1,8 +1,11 @@
 import React from 'react';
 
-const HeaderButton = ({children}) => {
+const HeaderButton = ({children, onClick}) => {
     return (
-        <button className="hover:underline cursor-pointer">
+        <button
+            className="hover:underline cursor-pointer"
+            onClick={onClick}
+        >
             {children}
         </button>
     );

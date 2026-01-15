@@ -1,0 +1,5 @@
+.isActive {
+    background-color: #E44D4D;
+    color: white;
+    transition: all 0.3s ease;
+}
