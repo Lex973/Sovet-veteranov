@@ -14,7 +14,6 @@ const NewsButtons = () => {
     const handleClick = (event, btn) => {
         event.preventDefault();
         console.log(`Clicked: ${btn}`)
-
         if (hashtag.includes(btn)) {
             const newArray = hashtag.filter(prev => prev !== btn)
             setHashtag(newArray);
