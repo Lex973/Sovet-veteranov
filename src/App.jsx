@@ -6,6 +6,7 @@ import Footer from "./components/layout/Footer.jsx";
 import Team from "./components/sections/Team/Team.jsx";
 import Committees from "./components/sections/Committees/Committees.jsx";
 import Contacts from "./components/sections/Contacts/Contacts.jsx";
+import ToApply from "./components/sections/ToApply/ToApply.jsx";
 function App() {
     const [currentPage, setCurrentPage] = useState('Новости');
 
@@ -19,6 +20,8 @@ function App() {
                 return <Committees/>
             case 'Районные отделения':
                 return <Contacts/>
+            case 'Обратиться':
+                return <ToApply/>
             default:
                 return <News/>
         }
