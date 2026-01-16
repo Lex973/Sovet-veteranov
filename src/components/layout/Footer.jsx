@@ -26,9 +26,14 @@ const Footer = () => {
                 </div>
 
                 <div className="flex flex-col text-right h-65 justify-between">
-                    <p className="text-xl">© Челябинский городской Совет ветеранов, 2019 г. <br/> Изготовлено с использованием средств Фонда <br/> президентских грантов</p>
+                    <span>
+                        <p className="text-lg">© Челябинский городской Совет ветеранов, 2019 г. <br/> Изготовлено с использованием средств Фонда <br/> президентских грантов</p>
+                    </span>
 
-                    <p className="text-xl">г. Челябинск, пл. Революции, дом 2, к. 510 <br/> +7 351 266-62-88</p>
+                    <span>
+                        <p className="text-2xl font-bold">Контакты:</p>
+                        <p className="text-lg">г. Челябинск, пл. Революции, дом 2, к. 510 <br/> +7 351 266-62-88 <br/> Veteranov41@mail.ru</p>
+                    </span>
                 </div>
 
             </div>

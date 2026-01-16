@@ -1,10 +1,11 @@
 import React from 'react';
+import DistrictDepartment from "./DistrictDepartment.jsx";
 
 const Contacts = () => {
     return (
-        <div>
-            
-        </div>
+        <section className="container mx-auto">
+            <DistrictDepartment/>
+        </section>
     );
 };
 

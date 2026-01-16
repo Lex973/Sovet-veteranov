@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderButton from "./HeaderButton.jsx";
 
 const Header = ({currentPage, setCurrentPage}) => {
-    const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Контакты'];
+    const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Районные отделения'];
 
     return (
         <header className="flex justify-between items-center container mx-auto mt-6">

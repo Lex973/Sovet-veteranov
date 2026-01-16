@@ -5,6 +5,7 @@ import News from "./components/sections/News/News.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import Team from "./components/sections/Team/Team.jsx";
 import Committees from "./components/sections/Committees/Committees.jsx";
+import Contacts from "./components/sections/Contacts/Contacts.jsx";
 function App() {
     const [currentPage, setCurrentPage] = useState('Новости');
 
@@ -16,6 +17,8 @@ function App() {
                 return <Team/>
             case 'Комитеты':
                 return <Committees/>
+            case 'Районные отделения':
+                return <Contacts/>
             default:
                 return <News/>
         }

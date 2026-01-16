@@ -15,7 +15,7 @@ const NewsList = ({selectedHashtags, setSelectedHashtags}) => {
     }
 
     return (
-        <section className="grid grid-cols-2 gap-10">
+        <section className="">
             {renderPosts()}
         </section>
     );
