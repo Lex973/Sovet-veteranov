@@ -1,8 +1,8 @@
 import React from 'react';
 import HeaderButton from "./HeaderButton.jsx";
 
-const Footer = () => {
-    const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Контакты'];
+const Footer = ({setCurrentPage}) => {
+    const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Районные отделения'];
 
     return (
         <footer className="w-full bg-[#2C2C2C] h-90 mt-10 flex justify-center items-center">
@@ -10,8 +10,8 @@ const Footer = () => {
                 <nav>
                     <p className="text-2xl">Навигация:</p>
                     <ul className="flex flex-col text-xl items-start">
-                        {menuItems.map((item, index) => (
-                            <HeaderButton key={index + 1} onClick={() => setCurrentPage(item)}>{item}</HeaderButton>
+                        {menuItems.map((item) => (
+                            <HeaderButton key={item} onClick={() => setCurrentPage(item)}>{item}</HeaderButton>
                         ))}
                     </ul>
                 </nav>

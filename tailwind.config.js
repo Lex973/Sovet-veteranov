@@ -7,7 +7,9 @@ export default {
     theme: {
         extend: {
             screens: {
+                'xs': '475px',
                 'md-800': '800px',
+                'md-900': '900px',
             }
         },
     },

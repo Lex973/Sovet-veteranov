@@ -13,6 +13,7 @@ const News = () => {
                 <h1 className="text-5xl font-bold">Новости</h1>
 
                 <NewsButtons selectedHashtags={selectedHashtags} setSelectedHashtags={setSelectedHashtags}/>
+                <div id="news" className="absolute top-250 left-50px"></div>
                 <NewsList selectedHashtags={selectedHashtags} setSelectedHashtags={setSelectedHashtags}/>
             </div>
         </section>

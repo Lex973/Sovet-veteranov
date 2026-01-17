@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const NewsElement = ({props}) => {
+    const [imageError, setImageError] = useState(false);
+
     return (
         <div className="mb-10 flex flex-col gap-[15px]">
             <p>
@@ -8,7 +10,18 @@ const NewsElement = ({props}) => {
                 <span className="ml-1 text-3xl">{props.title}</span>
             </p>
 
-            <div className="image h-100 bg-[#D9D9D9] text-black">{props.image}</div>
+            {imageError ? (
+                <div className="h-100 w-full bg-[#D9D9D9] text-black flex items-center justify-center rounded-lg">
+                    Изображение не загружено
+                </div>
+            ) : (
+                <img 
+                    src={props.image} 
+                    alt={props.title} 
+                    className="h-100 w-full object-cover rounded-lg"
+                    onError={() => setImageError(true)}
+                />
+            )}
 
             <p className="text-2xl">{props.subtitle}</p>
 
