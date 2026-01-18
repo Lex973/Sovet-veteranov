@@ -10,8 +10,6 @@ const NewsButtons = ({selectedHashtags, setSelectedHashtags}) => {
     ];
 
     const [hashtag, setHashtag] = useState([])
-    console.log(`Array: ${hashtag}`)
-
     const handleClick = (event, btn) => {
         event.preventDefault();
 

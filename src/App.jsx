@@ -34,7 +34,7 @@ function App() {
         }
     }
   return (
-    <>
+    <div className="relative">
         <Header currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         <section className="container mx-auto mt-5">
             <Button onClick={() => setCurrentPage('Вход в админ-панель')}>Вход в админ-панель</Button>
@@ -44,7 +44,7 @@ function App() {
         {renderPage(currentPage)}
 
         <Footer setCurrentPage={setCurrentPage}/>
-    </>
+    </div>
   )
 }
 

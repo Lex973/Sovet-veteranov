@@ -19,7 +19,7 @@ const TeamElement = ({team}) => {
                 <h3 className="text-xl font-semibold text-[#910000] mb-2">
                     {team.name}
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 h-30">
                     {team.description}
                 </p>
             </div>

@@ -1,0 +1,224 @@
+/* Garland.css */
+.garland-container {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.garland-title {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Основной провод */
+.garland {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 20px;
+    margin: 20px 0;
+}
+
+.garland-wire {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+    #444 0%,
+    #666 25%,
+    #888 50%,
+    #666 75%,
+    #444 100%
+    );
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Контейнер лампочки */
+.light {
+    position: relative;
+    width: 60px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.light:hover {
+    transform: scale(1.1);
+}
+
+/* Колба лампочки */
+.bulb {
+    width: 40px;
+    height: 50px;
+    background: radial-gradient(
+            circle at 30% 30%,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.5) 30%,
+            transparent 70%
+    );
+    border-radius: 50% 50% 40% 40%;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Нити накаливания */
+.filament {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    background: #ffcc00;
+    transform: translate(-50%, -50%);
+    border-radius: 1px;
+    z-index: 2;
+}
+
+.filament::before,
+.filament::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: #ffcc00;
+    top: -4px;
+}
+
+.filament::before { left: 3px; }
+.filament::after { right: 3px; }
+
+/* Свечение */
+.glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+}
+
+/* Включенное состояние */
+.light.on .glow {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(
+            circle,
+            var(--light-color) 0%,
+            rgba(255, 255, 255, 0.3) 30%,
+            transparent 70%
+    );
+    opacity: 0.7;
+    filter: blur(10px);
+    animation: pulse 1.5s infinite alternate;
+}
+
+.light.on .filament {
+    background: #fff;
+    box-shadow: 0 0 10px #fff, 0 0 20px #ffcc00;
+}
+
+.light.on .bulb {
+    background: radial-gradient(
+            circle at 30% 30%,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.8) 30%,
+            rgba(255, 255, 255, 0.3) 70%
+    );
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Выключенное состояние */
+.light.off .bulb {
+    background: rgba(100, 100, 100, 0.3);
+    filter: grayscale(0.8);
+}
+
+.light.off .filament {
+    background: #666;
+}
+
+/* Цоколь лампочки */
+.socket {
+    width: 25px;
+    height: 15px;
+    background: linear-gradient(180deg, #888 0%, #666 100%);
+    border-radius: 3px 3px 0 0;
+    position: relative;
+    margin-top: -2px;
+}
+
+/* Резьба цоколя */
+.threads {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    margin-top: 2px;
+}
+
+.thread {
+    width: 100%;
+    height: 1px;
+    background: #555;
+}
+
+/* Анимация пульсации */
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    100% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Статистика и кнопки */
+.garland-stats {
+    margin-top: 30px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.garland-stats p {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.toggle-all-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
+}
+
+.toggle-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.6);
+}

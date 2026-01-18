@@ -1,19 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import HeaderButton from "../HeaderButton.jsx";
-import BurgerButton from "./MobileMenu/BurgerButton.jsx";
+import BurgerButton from "./BurgerButton.jsx";
+import MobileMenu from "./MobileMenu/MobileMenu.jsx";
 
 const Header = ({setCurrentPage}) => {
     const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Районные отделения'];
+    const [modalWindow, setModalWindow] = useState(false);
+
 
     const handleClick = (item) => {
         setCurrentPage(item);
+        setModalWindow(!modalWindow);
+
         if (item === 'Новости') {
             setTimeout(() => {
                 const newsSection = document.getElementById('news');
+
                 if (newsSection) {
                     newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 0);
+            }, 100);
         }
     };
 
@@ -27,10 +33,20 @@ const Header = ({setCurrentPage}) => {
                         <HeaderButton key={item} onClick={() => handleClick(item)}>{item}</HeaderButton>
                     ))}
                 </ul>
-                <div className="bg-[#666666] w-[110%] h-1 mt-3 -ml-[5%]"></div>
+
+                <div className="hidden lg:block bg-[#666666] w-[110%] h-1 mt-3 -ml-[5%]"></div>
+
             </nav>
 
-            <BurgerButton/>
+            <MobileMenu
+                isOpen={modalWindow}
+                setModalWindow={setModalWindow}
+                onClick={handleClick}
+            />
+
+            <div className="lg:hidden flex flex-col">
+                <BurgerButton modalWindow={modalWindow} setModalWindow={setModalWindow}/>
+            </div>
         </header>
     );
 };
