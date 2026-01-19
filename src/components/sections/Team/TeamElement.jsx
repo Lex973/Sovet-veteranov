@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
-const TeamElement = ({team}) => {
+const TeamElement = ({team, onReadMore}) => {
+    const MAX_HEIGHT = 140;
+
+    const [overflow, setOverflow] = useState(false)
+    const paragraph = useRef(null)
+
+
+    useEffect(() => {
+        if (paragraph.current) {
+            const scrollHeight = paragraph.current.scrollHeight;
+
+            scrollHeight > MAX_HEIGHT ? setOverflow(true): setOverflow(false);
+        }
+    }, [team.description]);
+
     return (
         <div
             key={team.id}
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-101 duration-200 border border-gray-100"
+            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-101 duration-200 border border-gray-100 relative"
         >
             <div className="relative h-64 overflow-hidden">
                 <img
@@ -19,9 +33,15 @@ const TeamElement = ({team}) => {
                 <h3 className="text-xl font-semibold text-[#910000] mb-2">
                     {team.name}
                 </h3>
-                <p className="text-gray-700 h-30">
+                <p
+                    ref={paragraph}
+                    className={overflow ? 'text-gray-700 h-30 overflow-hidden [mask-image:linear-gradient(to_bottom,black_40%,transparent_80%)]' : 'text-gray-700 h-30'}>
                     {team.description}
                 </p>
+                <span className={overflow ? 'absolute right-10 bottom-4 cursor-pointer hover:text-red-500' : 'hidden'} onClick={onReadMore}>
+                    Узнать больше
+                </span>
+
             </div>
         </div>
     );

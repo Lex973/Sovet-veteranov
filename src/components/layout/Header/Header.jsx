@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import HeaderButton from "../HeaderButton.jsx";
 import BurgerButton from "./BurgerButton.jsx";
 import MobileMenu from "./MobileMenu/MobileMenu.jsx";
-
 const Header = ({setCurrentPage}) => {
     const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Районные отделения'];
     const [modalWindow, setModalWindow] = useState(false);
@@ -24,7 +23,7 @@ const Header = ({setCurrentPage}) => {
     };
 
     return (
-        <header className="flex justify-between items-center container mx-auto mt-6">
+        <header className="header flex justify-between items-center container mx-auto mt-6">
             <div className="rounded-full bg-[#b61111] w-18 h-18"></div>
 
             <nav className="hidden lg:flex flex-col justify-center items-center mr-10">
