@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import HeaderButton from "../HeaderButton.jsx";
 import BurgerButton from "./BurgerButton.jsx";
 import MobileMenu from "./MobileMenu/MobileMenu.jsx";
+import './header.css'
 const Header = ({setCurrentPage}) => {
     const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Районные отделения'];
     const [modalWindow, setModalWindow] = useState(false);
