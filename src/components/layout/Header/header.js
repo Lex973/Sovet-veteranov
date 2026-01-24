@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const stickyHeader = () => {
         const header = document.querySelector('.header');
+
         let lastScroll = 0;
 
         window.addEventListener('scroll', () => {
