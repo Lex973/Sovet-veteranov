@@ -3,7 +3,7 @@ import React from 'react';
 const HeaderButton = ({children, onClick}) => {
     return (
         <button
-            className="hover:underline cursor-pointer 
+            className="hover:underline cursor-pointer
                        text-[15px]
                        min-[1000px]:text-[19px]
                        min-[1100px]:text-[19px]
@@ -12,6 +12,7 @@ const HeaderButton = ({children, onClick}) => {
                        min-[1800px]:text-[22px]
                        whitespace-nowrap
                        transition-all duration-200"
+
             onClick={onClick}
         >
             {children}
