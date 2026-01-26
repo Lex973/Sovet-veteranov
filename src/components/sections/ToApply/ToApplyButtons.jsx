@@ -15,7 +15,7 @@ const ToApplyButtons = ({setSwitchSection}) => {
         <section className="container mx-auto flex flex-col  items-center">
             <h1 className="text-5xl font-bold text-center mt-10 mb-15">Обратиться</h1>
 
-            <nav className="flex gap-7">
+            <nav className="flex flex-col sm:flex-row md:gap-3 lg:gap-5 xl:gap-7 2xl:gap-7">
                 {textButtons.map((btn, index) => (
                     <Button key={index + 1} onClick={(event) => handleClick(event, btn)} isActive={activeButton.includes(btn)}>{btn}</Button>
                 ))}

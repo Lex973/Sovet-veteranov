@@ -12,8 +12,6 @@ const Footer = ({ setCurrentPage }) => {
                     flex justify-between items-center
                     text-white
                 ">
-
-                    {/* Навигация */}
                     <nav>
                         <p className="text-sm sm:text-lg lg:text-2xl mb-2">
                             Навигация:
@@ -30,7 +28,6 @@ const Footer = ({ setCurrentPage }) => {
                         </ul>
                     </nav>
 
-                    {/* Галерея (ВСЕГДА ПО ЦЕНТРУ) */}
                     <div className="
                         grid grid-cols-3
                         gap-2 sm:gap-4 lg:gap-5
@@ -49,7 +46,6 @@ const Footer = ({ setCurrentPage }) => {
                         ))}
                     </div>
 
-                    {/* Контакты */}
                     <div className="text-right">
                         <p className="text-[10px] sm:text-sm lg:text-lg leading-relaxed mb-3">
                             © Челябинский городской Совет ветеранов, 2019 г. <br />
@@ -60,6 +56,7 @@ const Footer = ({ setCurrentPage }) => {
                         <p className="text-sm sm:text-lg lg:text-2xl font-bold mb-1">
                             Контакты:
                         </p>
+
                         <p className="text-xs sm:text-base lg:text-lg leading-relaxed">
                             г. Челябинск, пл. Революции, дом 2, к. 510 <br />
                             +7 351 266-62-88 <br />
