@@ -20,12 +20,16 @@ const TeamElement = ({team, onReadMore}) => {
             key={team.id}
             className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-101 duration-200 border border-gray-100 relative"
         >
-            <div className="relative h-64 overflow-hidden">
-                <img
-                    src={team.image}
-                    alt={team.alt || team.name}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                />
+            <div className="relative h-64 overflow-hidden bg-[#e5e5e5]">
+                {team.image ? (
+                    <img
+                        src={team.image}
+                        alt={team.alt || team.name}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-6xl">👤</div>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
 

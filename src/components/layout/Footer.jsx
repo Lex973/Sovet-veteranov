@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderButton from "./HeaderButton.jsx";
 
 const Footer = ({ setCurrentPage }) => {
-    const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Районные отделения'];
+    const menuItems = ['Главная', 'Новости', 'Команда', 'Обратиться', 'Районные отделения'];
 
     return (
         <footer className="w-full bg-[#2C2C2C] mt-10">

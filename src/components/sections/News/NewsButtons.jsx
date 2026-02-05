@@ -1,7 +1,14 @@
 import React, {useState, useRef} from 'react';
 import Button from "../../ui/Button/Button.jsx";
 
-const NewsButtons = ({selectedHashtags, setSelectedHashtags}) => {
+const DEFAULT_HASHTAGS = [
+    '#Спорт', '#Отдых', '#Здоровье', '#ЖКХ', '#Культура',
+    '#Социально-бытовой комитет', '#Образование',
+    '#Военно-патриотический комитет', '#Проблемные вопросы',
+    '#Решение проблемных вопросов', '#Разное'
+];
+
+const NewsButtons = ({ selectedHashtags, setSelectedHashtags, hashtags: hashtagsFromApi }) => {
     const scrollElement = useRef(null)
 
     const [canScrollLeft, setCanScrollLeft] = useState(true)
@@ -39,12 +46,7 @@ const NewsButtons = ({selectedHashtags, setSelectedHashtags}) => {
         }, 300)
     }
 
-    const hashtags = [
-        '#Спорт', '#Отдых', '#Здоровье', '#ЖКХ', '#Культура',
-        '#Социально-бытовой комитет', '#Образование',
-        '#Военно-патриотический комитет', '#Проблемные вопросы',
-        '#Решение проблемных вопросов', '#Разное'
-    ];
+    const hashtags = (hashtagsFromApi && hashtagsFromApi.length > 0) ? hashtagsFromApi : DEFAULT_HASHTAGS;
 
     const [hashtag, setHashtag] = useState([])
     const handleClick = (event, btn) => {

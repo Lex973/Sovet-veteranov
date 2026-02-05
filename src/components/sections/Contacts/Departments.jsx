@@ -20,12 +20,14 @@ const Departments = ({dept}) => {
                     <span className="text-gray-700">{dept.phone}</span>
                 </div>
 
-                <div className="flex items-start">
-                    <span className="font-bold text-[#910000] w-20 flex-shrink-0">Email:</span>
-                    <a href={`mailto:${dept.email}`} className="text-gray-700 break-all underline hover:no-underline">
-                        {dept.email}
-                    </a>
-                </div>
+                {dept.email && (
+                    <div className="flex items-start">
+                        <span className="font-bold text-[#910000] w-20 flex-shrink-0">Email:</span>
+                        <a href={`mailto:${dept.email}`} className="text-gray-700 break-all underline hover:no-underline">
+                            {dept.email}
+                        </a>
+                    </div>
+                )}
             </div>
 
         </div>

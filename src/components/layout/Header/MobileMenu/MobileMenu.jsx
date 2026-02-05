@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import MobileMenuButton from "./MobileMenuButton.jsx";
 
 const MobileMenu = ({setModalWindow, onClick, isOpen}) => {
-    const menuItems = ['Главная', 'Новости', 'Команда', 'Комитеты', 'Обратиться', 'Районные отделения'];
+    const menuItems = ['Главная', 'Новости', 'Команда', 'Обратиться', 'Районные отделения'];
     const handleItemClick = (element) => {
         onClick(element);
     };

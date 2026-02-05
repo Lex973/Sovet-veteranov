@@ -1,3 +1,31 @@
+# Совет ветеранов
+
+Сайт на React (Vite) + бэкенд на FastAPI. Новости, команда и районные отделения загружаются с API.
+
+## Запуск
+
+1. **Бэкенд** (из папки `backend`):
+   ```bash
+   cd backend
+   python -m venv venv
+   venv\Scripts\activate
+   pip install -r requirements.txt
+   uvicorn app.main:app --reload --port 8000
+   ```
+   Первое заполнение БД: `python -m scripts.seed_db`
+
+2. **Фронт** (из корня проекта):
+   ```bash
+   npm install
+   npm run dev
+   ```
+   По умолчанию фронт ходит на `http://localhost:8000`. Чтобы указать другой URL API, создай файл `.env` в корне с переменной:
+   ```
+   VITE_API_URL=http://localhost:8000
+   ```
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

@@ -1,0 +1,11 @@
+/* Стили для форматированного текста новостей (из редактора) */
+.news-content h1 { font-size: 1.5rem; font-weight: 700; margin: 0.75em 0 0.5em; }
+.news-content h2 { font-size: 1.25rem; font-weight: 700; margin: 0.75em 0 0.5em; }
+.news-content h3 { font-size: 1.125rem; font-weight: 600; margin: 0.5em 0; }
+.news-content p { margin: 0.5em 0; line-height: 1.6; }
+.news-content ul { list-style: disc; margin: 0.5em 0; padding-left: 1.5rem; }
+.news-content ol { list-style: decimal; margin: 0.5em 0; padding-left: 1.5rem; }
+.news-content li { margin: 0.25em 0; }
+.news-content strong { font-weight: 700; }
+.news-content a { color: #910000; text-decoration: underline; }
+.news-content a:hover { text-decoration: none; }
