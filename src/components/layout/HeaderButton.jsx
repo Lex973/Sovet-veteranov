@@ -1,23 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const HeaderButton = ({children, onClick}) => {
-    return (
-        <button
-            className="hover:underline cursor-pointer
-                       text-[15px]
-                       min-[1000px]:text-[19px]
-                       min-[1100px]:text-[19px]
-                       min-[1600px]:text-[20px]
-                       min-[1700px]:text-[21px]
-                       min-[1800px]:text-[22px]
-                       whitespace-nowrap
-                       transition-all duration-200"
-
-            onClick={onClick}
-        >
-            {children}
-        </button>
-    );
+const HeaderButton = ({ children, onClick }) => {
+  return (
+    <button
+      type="button"
+      className="header-nav-btn text-white/95 hover:text-white hover:underline font-medium text-base md:text-lg py-1 px-0 whitespace-nowrap transition-colors duration-200"
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default HeaderButton;

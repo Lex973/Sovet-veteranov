@@ -9,20 +9,20 @@ const Departments = ({dept}) => {
 
             <div className="space-y-2 text-sm md:text-base">
                 <div className="flex items-start">
-                    <span className="font-bold text-[#910000] w-20 flex-shrink-0 ">
+                    <span className="font-bold text-[#0b3b2e] w-20 flex-shrink-0 ">
                         Адрес:
                     </span>
                     <span className="text-gray-700">{dept.address}</span>
                 </div>
 
                 <div className="flex items-center">
-                    <span className="font-bold text-[#910000] w-20 flex-shrink-0">Тел:</span>
+                    <span className="font-bold text-[#0b3b2e] w-20 flex-shrink-0">Тел:</span>
                     <span className="text-gray-700">{dept.phone}</span>
                 </div>
 
                 {dept.email && (
                     <div className="flex items-start">
-                        <span className="font-bold text-[#910000] w-20 flex-shrink-0">Email:</span>
+                        <span className="font-bold text-[#0b3b2e] w-20 flex-shrink-0">Email:</span>
                         <a href={`mailto:${dept.email}`} className="text-gray-700 break-all underline hover:no-underline">
                             {dept.email}
                         </a>

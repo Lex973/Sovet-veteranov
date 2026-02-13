@@ -62,6 +62,8 @@ class NewsRead(NewsBase):
 class TeamMemberBase(BaseModel):
     name: str
     description: str = ""
+    image: str = ""
+    position: int = 0
 
 
 class TeamMemberCreate(TeamMemberBase):
@@ -71,6 +73,8 @@ class TeamMemberCreate(TeamMemberBase):
 class TeamMemberUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
+    image: Optional[str] = None
+    position: Optional[int] = None
 
 
 class TeamMemberRead(TeamMemberBase):
@@ -103,6 +107,99 @@ class DistrictOfficeUpdate(BaseModel):
 
 
 class DistrictOfficeRead(DistrictOfficeBase):
+    id: int
+    created_at: Optional[datetime] = None
+
+    class Config:
+        from_attributes = True
+
+
+# --- Feedback / обращения ---
+class FeedbackBase(BaseModel):
+    full_name: str
+    email: str = ""
+    phone: str = ""
+    question: str
+
+
+class FeedbackCreate(FeedbackBase):
+    pass
+
+
+class FeedbackUpdate(BaseModel):
+    status: Optional[str] = None
+    published: Optional[bool] = None
+    solution_text: Optional[str] = None
+    solution_image: Optional[str] = None
+
+
+class FeedbackRead(FeedbackBase):
+    id: int
+    status: str
+    published: bool = False
+    solution_text: str = ""
+    solution_image: str = ""
+    created_at: Optional[datetime] = None
+
+    class Config:
+        from_attributes = True
+
+
+class FeedbackPublishedRead(BaseModel):
+    """Публичный вид для блока «Решения вопросов» (только опубликованные)."""
+    id: int
+    full_name: str
+    question: str
+    solution_text: str = ""
+    solution_image: str = ""
+    created_at: Optional[datetime] = None
+
+    class Config:
+        from_attributes = True
+
+
+# --- Partners (подвал) ---
+class PartnerBase(BaseModel):
+    image: str = ""
+    link: str = ""
+    position: int = 0
+
+
+class PartnerCreate(PartnerBase):
+    pass
+
+
+class PartnerUpdate(BaseModel):
+    image: Optional[str] = None
+    link: Optional[str] = None
+    position: Optional[int] = None
+
+
+class PartnerRead(PartnerBase):
+    id: int
+    created_at: Optional[datetime] = None
+
+    class Config:
+        from_attributes = True
+
+
+# --- Bot subscribers ---
+class BotSubscriberBase(BaseModel):
+    name: str = ""
+    chat_id: str
+    is_active: bool = True
+
+
+class BotSubscriberCreate(BotSubscriberBase):
+    pass
+
+
+class BotSubscriberUpdate(BaseModel):
+    name: Optional[str] = None
+    is_active: Optional[bool] = None
+
+
+class BotSubscriberRead(BotSubscriberBase):
     id: int
     created_at: Optional[datetime] = None
 

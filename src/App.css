@@ -1,3 +1,11 @@
+/* Базовые стили приложения */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #f4f5f7;
+  color: #1c1c1c;
+}
+
 /* Стили для форматированного текста новостей (из редактора) */
 .news-content h1 { font-size: 1.5rem; font-weight: 700; margin: 0.75em 0 0.5em; }
 .news-content h2 { font-size: 1.25rem; font-weight: 700; margin: 0.75em 0 0.5em; }
@@ -7,5 +15,103 @@
 .news-content ol { list-style: decimal; margin: 0.5em 0; padding-left: 1.5rem; }
 .news-content li { margin: 0.25em 0; }
 .news-content strong { font-weight: 700; }
-.news-content a { color: #910000; text-decoration: underline; }
+.news-content a { color: #0b3b2e; text-decoration: underline; }
 .news-content a:hover { text-decoration: none; }
+
+/* Праздничное оформление (включается в админке). Классы вешаются на корневой div в App. */
+.holiday-newyear-decor::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 12px,
+    rgba(255, 255, 255, 0.25) 12px,
+    rgba(255, 255, 255, 0.25) 14px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Крупные снежинки, слой падает вниз */
+.holiday-newyear-effects::after {
+  content: "";
+  position: fixed;
+  top: -100%;
+  left: 0;
+  right: 0;
+  height: 300%;
+  background-image:
+    radial-gradient(8px 8px at 5% 2%, rgba(255,255,255,0.9) 0%, transparent 70%),
+    radial-gradient(6px 6px at 25% 8%, rgba(255,255,255,0.85) 0%, transparent 70%),
+    radial-gradient(8px 8px at 45% 4%, rgba(255,255,255,0.9) 0%, transparent 70%),
+    radial-gradient(6px 6px at 65% 12%, rgba(255,255,255,0.8) 0%, transparent 70%),
+    radial-gradient(8px 8px at 85% 3%, rgba(255,255,255,0.85) 0%, transparent 70%),
+    radial-gradient(6px 6px at 15% 18%, rgba(255,255,255,0.8) 0%, transparent 70%),
+    radial-gradient(8px 8px at 55% 22%, rgba(255,255,255,0.9) 0%, transparent 70%),
+    radial-gradient(6px 6px at 75% 16%, rgba(255,255,255,0.85) 0%, transparent 70%),
+    radial-gradient(8px 8px at 35% 28%, rgba(255,255,255,0.8) 0%, transparent 70%),
+    radial-gradient(6px 6px at 95% 24%, rgba(255,255,255,0.85) 0%, transparent 70%);
+  background-size: 120% 40%;
+  background-repeat: repeat;
+  animation: holiday-snow-fall 18s linear infinite;
+  pointer-events: none;
+  z-index: 9997;
+}
+@keyframes holiday-snow-fall {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(33.333%); }
+}
+
+/* Георгиевская лента — широкая полоса сверху (чёрный, оранжевый, белая полоска) */
+.holiday-victory-decor::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: repeating-linear-gradient(
+    90deg,
+    #000 0,
+    #000 14px,
+    #d4af37 14px,
+    #d4af37 28px,
+    #000 28px,
+    #000 42px,
+    #d4af37 42px,
+    #d4af37 56px,
+    #fff 56px,
+    #fff 62px,
+    #d4af37 62px,
+    #d4af37 76px,
+    #000 76px,
+    #000 90px,
+    #d4af37 90px,
+    #d4af37 104px
+  );
+  background-repeat: repeat-x;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.holiday-victory-effects::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(3px 3px at 15% 25%, rgba(255, 215, 0, 0.35) 0%, transparent 100%),
+    radial-gradient(3px 3px at 85% 15%, rgba(255, 215, 0, 0.3) 0%, transparent 100%),
+    radial-gradient(3px 3px at 50% 70%, rgba(255, 215, 0, 0.3) 0%, transparent 100%);
+  animation: holiday-star-twinkle 2.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 9997;
+}
+@keyframes holiday-star-twinkle {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}

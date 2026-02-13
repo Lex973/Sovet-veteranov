@@ -1,21 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const stickyHeader = () => {
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
         const header = document.querySelector('.header');
+        if (!header) return;
 
-        let lastScroll = 0;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-
-            if (currentScroll > 100) {
-                header.classList.add('sticky');
-            } else {
-                header.classList.remove('sticky');
-            }
-
-            lastScroll = currentScroll;
-        });
-    }
-
-    stickyHeader()
-})
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 100) {
+            header.classList.add('sticky');
+        } else {
+            header.classList.remove('sticky');
+        }
+        lastScroll = currentScroll;
+    });
+});

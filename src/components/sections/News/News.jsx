@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 import NewsButtons from "./NewsButtons.jsx";
 import NewsList from "./NewsList.jsx";
 import NewsLogo from "./NewsLogo.jsx";
@@ -10,43 +10,40 @@ const News = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        let cancelled = false;
+    const loadNews = useCallback(() => {
         setLoading(true);
         setError(null);
         api.news
             .list()
-            .then((data) => {
-                if (!cancelled) setPosts(Array.isArray(data) ? data : []);
-            })
-            .catch((e) => {
-                if (!cancelled) setError(e.message || "Не удалось загрузить новости");
-            })
-            .finally(() => {
-                if (!cancelled) setLoading(false);
-            });
-        return () => { cancelled = true; };
+            .then((data) => setPosts(Array.isArray(data) ? data : []))
+            .catch((e) => setError(e.message || "Не удалось загрузить новости"))
+            .finally(() => setLoading(false));
     }, []);
+
+    useEffect(() => {
+        loadNews();
+    }, [loadNews]);
 
     const hashtags = [...new Set(posts.map((p) => p.hashtag).filter(Boolean))];
 
     return (
-        <section>
-            <NewsLogo/>
+        <section className="min-h-screen">
+            <NewsLogo />
 
-            <div className="mt-20 container mx-auto flex flex-col justify-center items-center">
-                <h1 className="text-4xl font-bold sm:text-4xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl">Новости</h1>
+            <div id="news" className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0b3b2e] mb-8">Новости</h1>
 
                 <NewsButtons
                     selectedHashtags={selectedHashtags}
                     setSelectedHashtags={setSelectedHashtags}
                     hashtags={hashtags}
                 />
-                <div id="news" className="absolute top-250 left-50px"></div>
+
                 <NewsList
                     posts={posts}
                     loading={loading}
                     error={error}
+                    onRetry={loadNews}
                     selectedHashtags={selectedHashtags}
                     setSelectedHashtags={setSelectedHashtags}
                 />

@@ -1,14 +1,26 @@
-header.sticky {
-    position: sticky;
-    border-bottom-right-radius: 20px;
-    padding: 10px 10px;
-    border-bottom-left-radius: 20px;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    transition: all 0.3s ease;
+/* Единая зелёная шапка */
+.header {
+  background: linear-gradient(135deg, #0b3b2e 0%, #145c3b 50%, #0b3b2e 100%);
+  color: #fff;
+  position: relative;
+  z-index: 50;
+  box-shadow: 0 2px 12px rgba(11, 59, 46, 0.25);
+}
+
+.header__inner {
+  max-width: 1280px;
+}
+
+.header__logo {
+  flex-shrink: 0;
+}
+
+.header.sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  transition: box-shadow 0.2s ease;
 }

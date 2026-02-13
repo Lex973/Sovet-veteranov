@@ -1,41 +1,41 @@
-import React, {useState} from 'react';
+import React from "react";
+import { API_BASE } from "../../../../api/config.js";
 
-const SolutionElement = ({props}) => {
-    const [bg, setBg] = useState(true)
+const imageSrc = (url) => {
+  if (!url) return "";
+  return url.startsWith("http") ? url : `${API_BASE}${url.startsWith("/") ? "" : "/"}${url}`;
+};
 
-    if (props.image) {
-    } else {
-        setBg(false)
-        props.image = "Текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа Параграф, текст прараграфа текст прараграфа текст прараграфа текст прараграфа "
-    }
-    return (
-        <div className="mb-10 flex flex-col gap-[15px]">
-            <p>
-                <strong className="text-[#910000] text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl">Заголовок:</strong>
-                <span className="ml-1 text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl">{props.title}</span>
-            </p>
+const SolutionElement = ({ item }) => {
+  const dateStr = item.created_at ? new Date(item.created_at).toLocaleDateString("ru", { day: "numeric", month: "long", year: "numeric" }) : "";
 
-            <div
-                className={bg ? "image h-100 bg-[#D9D9D9] text-black overflow-hidden overflow-y-scroll" : "image h-100 text-black"}
-            >
-                {props.image}
-            </div>
-
-            <p className="text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">{props.subtitle}</p>
-
-            <div className="flex items-center gap-5">
-                <div>
-                    <span className="text-md md:text-xl lg:text-xl xl:text-xl">{props.date}</span>
-                    <strong className="ml-[5px] text-[#910000] font-medium text-md md:text-xl lg:text-xl xl:text-xl">{props.hashtag}</strong>
-                </div>
-
-                <div className="flex items-center justify-center flex-1">
-                    <div className="line w-full h-1 bg-[#1C1C1C]"></div>
-                </div>
-            </div>
-
+  return (
+    <article className="mb-10 flex flex-col gap-4 pb-10 border-b border-gray-200 last:border-0">
+      <p>
+        <strong className="text-[#0b3b2e] text-lg md:text-xl">Вопрос:</strong>
+        <span className="ml-1 text-gray-800">{item.question}</span>
+      </p>
+      {item.solution_text && (
+        <div>
+          <strong className="text-[#0b3b2e] text-lg md:text-xl block mb-1">Решение:</strong>
+          <p className="text-gray-700 whitespace-pre-wrap">{item.solution_text}</p>
         </div>
-    );
+      )}
+      {item.solution_image && (
+        <div className="rounded-lg overflow-hidden max-w-md">
+          <img
+            src={imageSrc(item.solution_image)}
+            alt="К решению"
+            className="w-full h-auto object-cover"
+          />
+        </div>
+      )}
+      <div className="flex items-center gap-4 text-sm text-gray-500">
+        <span>{item.full_name}</span>
+        {dateStr && <span>{dateStr}</span>}
+      </div>
+    </article>
+  );
 };
 
 export default SolutionElement;

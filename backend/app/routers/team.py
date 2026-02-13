@@ -11,7 +11,7 @@ router = APIRouter(prefix="/team", tags=["team"])
 
 @router.get("", response_model=List[TeamMemberRead])
 def list_team(db: Session = Depends(get_db)):
-    return db.query(TeamMember).order_by(TeamMember.id).all()
+    return db.query(TeamMember).order_by(TeamMember.position.asc(), TeamMember.id.asc()).all()
 
 
 @router.get("/{member_id}", response_model=TeamMemberRead)
@@ -24,7 +24,10 @@ def get_team_member(member_id: int, db: Session = Depends(get_db)):
 
 @router.post("", response_model=TeamMemberRead, status_code=201)
 def create_team_member(data: TeamMemberCreate, db: Session = Depends(get_db)):
-    member = TeamMember(**data.model_dump())
+    payload = data.model_dump()
+    max_pos = db.query(TeamMember.position).order_by(TeamMember.position.desc()).first()
+    payload["position"] = (max_pos[0] + 1) if max_pos is not None else 0
+    member = TeamMember(**payload)
     db.add(member)
     db.commit()
     db.refresh(member)

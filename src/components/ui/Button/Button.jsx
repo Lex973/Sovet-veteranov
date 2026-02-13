@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./Button.module.css";
 
-const Button = ({children, isActive, onClick, width, height, noMargin}) => {
+const Button = ({ children, isActive, onClick, width, height, noMargin, type, disabled }) => {
     const defaultStyles = noMargin
         ? "border-2 border-black rounded-4xl cursor-pointer duration-300 whitespace-nowrap px-5 py-3" +
         "text-sm h-10 " +
@@ -23,6 +23,8 @@ const Button = ({children, isActive, onClick, width, height, noMargin}) => {
 
     return (
         <button
+            type={type ?? "button"}
+            disabled={disabled}
             className={isActive ? `${classes.isActive} ${defaultStyles} ${width} ${height}` : `${defaultStyles} ${width} ${height}`}
             onClick={onClick}
         >

@@ -38,7 +38,7 @@ const MobileMenu = ({setModalWindow, onClick, isOpen}) => {
                 </ul>
 
                 <button
-                    className="w-full text-center mt-5 bg-red-200 py-3 rounded-xl text-[#910000] cursor-pointer hover:bg-red-300 text-md"
+                    className="w-full text-center mt-5 bg-emerald-100 py-3 rounded-xl text-[#0b3b2e] cursor-pointer hover:bg-emerald-200 text-md"
                     onClick={closeMenu}>
                     Закрыть меню
                 </button>

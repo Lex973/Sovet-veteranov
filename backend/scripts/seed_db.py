@@ -46,14 +46,22 @@ TEAM_DATA = [
     {"name": "Матвеев Артем Хренов", "description": "Текст параграфа описывающий члена команды текст параграфа описывающий члена команды текст параграфа описывающий члены команды."},
 ]
 
+# Челябинский городской Совет ветеранов + районные отделения
 DISTRICT_OFFICES_DATA = [
-    {"name": "Калининский Совет ветеранов", "address": "ул. Кирова, 10", "phone": "791-65-91", "email": "kalinsovetvet@yandex.ru"},
-    {"name": "Курчатовский Совет ветеранов", "address": "ул. Ворошилова, 31-71", "phone": "793-02-33", "email": "veteranu7474@mail.ru"},
-    {"name": "Ленинский Совет ветеранов", "address": "ул. Гагарина, 23", "phone": "256-24-05", "email": "veteranlen@mail.ru"},
-    {"name": "Металлургический Совет ветеранов", "address": "ул. Б. Хмельницкого", "phone": "723-09-08", "email": "rsvmetall@mail.ru"},
-    {"name": "Советский Совет ветеранов", "address": "ул. Цвиллинга, 58", "phone": "237-06-98", "email": "sovetveteran97@mail.ru"},
-    {"name": "Тракторозаводский Совет ветеранов", "address": "ул. 1-ой Пятилетки", "phone": "775-34-05", "email": "tzrsv@yandex.ru"},
-    {"name": "Центральный Совет ветеранов", "address": "ул. Коммуны, 135", "phone": "225-41-31", "email": "sovetveteranov74a@yandex.ru"},
+    {
+        "name": "Челябинский городской Совет ветеранов",
+        "address": "г. Челябинск, пл. Революции, дом 2, к. 510",
+        "phone": "8 (351) 266-62-88",
+        "email": "veteranov41@mail.ru",
+        "description": "Сайт: советветеранов.рф",
+    },
+    {"name": "Калининский Совет ветеранов", "address": "ул. Кирова, 10", "phone": "791-65-91", "email": "kalinsovetvet@yandex.ru", "description": ""},
+    {"name": "Курчатовский Совет ветеранов", "address": "ул. Ворошилова, 31-71", "phone": "793-02-33", "email": "veteranu7474@mail.ru", "description": ""},
+    {"name": "Ленинский Совет ветеранов", "address": "ул. Гагарина, 23", "phone": "256-24-05", "email": "veteranlen@mail.ru", "description": ""},
+    {"name": "Металлургический Совет ветеранов", "address": "ул. Б. Хмельницкого, 6", "phone": "723-09-08", "email": "rsvmetall@mail.ru", "description": ""},
+    {"name": "Советский Совет ветеранов", "address": "ул. Цвиллинга, 58", "phone": "237-06-98", "email": "sovetveteran97@mail.ru", "description": ""},
+    {"name": "Тракторозаводский Совет ветеранов", "address": "ул. 1-ой Пятилетки, 43", "phone": "775-34-05", "email": "tzrsv@yandex.ru", "description": ""},
+    {"name": "Центральный Совет ветеранов", "address": "ул. Коммуны, 135", "phone": "225-41-31", "email": "sovetveteranov74a@yandex.ru", "description": ""},
 ]
 
 
