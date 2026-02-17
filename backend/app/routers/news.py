@@ -3,16 +3,17 @@ from sqlalchemy.orm import Session
 from typing import List
 
 from ..database import get_db
-from ..models import News
+from ..models import News, NewsChannelMessage
 from ..schemas import NewsRead, NewsCreate, NewsUpdate
 from ..telegram_notify import notify_new_news
+from ..channel import post_news_to_channel, delete_news_from_channel
 
 router = APIRouter(prefix="/news", tags=["news"])
 
 
 @router.get("", response_model=List[NewsRead])
 def list_news(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    items = db.query(News).order_by(News.date.desc()).offset(skip).limit(limit).all()
+    items = db.query(News).order_by(News.date.desc(), News.id.desc()).offset(skip).limit(limit).all()
     return items
 
 
@@ -31,6 +32,10 @@ def create_news(data: NewsCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(news)
     notify_new_news(news)
+    try:
+        post_news_to_channel(news)
+    except Exception:
+        pass  # ошибки залогированы и отправлены админам в channel.post_news_to_channel
     return news
 
 
@@ -51,6 +56,11 @@ def delete_news(news_id: int, db: Session = Depends(get_db)):
     news = db.query(News).filter(News.id == news_id).first()
     if not news:
         raise HTTPException(status_code=404, detail="Новость не найдена")
+    try:
+        delete_news_from_channel(news_id)
+    except Exception:
+        pass  # ошибки залогированы и отправлены админам в channel.delete_news_from_channel
+    db.query(NewsChannelMessage).filter(NewsChannelMessage.news_id == news_id).delete()
     db.delete(news)
     db.commit()
     return None

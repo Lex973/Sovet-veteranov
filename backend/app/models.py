@@ -77,3 +77,14 @@ class BotSubscriber(Base):
     chat_id = Column(String(100), unique=True, index=True, nullable=False)
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
+class NewsChannelMessage(Base):
+    """Сообщения в Telegram-канале, привязанные к новости (для удаления при удалении новости)."""
+    __tablename__ = "news_channel_messages"
+
+    id = Column(Integer, primary_key=True, index=True)
+    news_id = Column(Integer, nullable=False, index=True)
+    channel_chat_id = Column(String(100), nullable=False)
+    message_id = Column(Integer, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())

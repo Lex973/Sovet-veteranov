@@ -23,16 +23,34 @@ const NewsButtons = ({ selectedHashtags, setSelectedHashtags, hashtags: hashtags
         const clientWidth = container.clientWidth;
         const scrollWidth = container.scrollWidth;
 
-        const canScrollRight = scrollLeft > 15
-        setCanScrollRight(canScrollRight)
-
-        const canScrollLeft = scrollLeft + clientWidth < scrollWidth - 15
+        // Проверяем возможность прокрутки влево (есть ли контент слева)
+        const canScrollLeft = scrollLeft > 15
         setCanScrollLeft(canScrollLeft)
+
+        // Проверяем возможность прокрутки вправо (есть ли контент справа)
+        const canScrollRight = scrollLeft + clientWidth < scrollWidth - 15
+        setCanScrollRight(canScrollRight)
     };
 
     const right = (e) => {
         e.preventDefault()
-        scrollElement.current.scrollBy({ left: 300, behavior: 'smooth'})
+        if (!scrollElement.current) return;
+        
+        const container = scrollElement.current;
+        const scrollLeft = container.scrollLeft;
+        const clientWidth = container.clientWidth;
+        const scrollWidth = container.scrollWidth;
+        
+        // Проверяем, можем ли прокрутить вправо
+        if (scrollLeft + clientWidth >= scrollWidth - 15) {
+            return; // Уже в конце, не прокручиваем
+        }
+        
+        // Ограничиваем прокрутку, чтобы не выйти за пределы
+        const maxScroll = scrollWidth - clientWidth;
+        const nextScroll = Math.min(scrollLeft + 300, maxScroll);
+        
+        container.scrollTo({ left: nextScroll, behavior: 'smooth'})
         setTimeout(() => {
             checkScrollPosition()
         }, 300)
@@ -40,7 +58,20 @@ const NewsButtons = ({ selectedHashtags, setSelectedHashtags, hashtags: hashtags
 
     const left = (e) => {
         e.preventDefault()
-        scrollElement.current.scrollBy({ left: -300, behavior: 'smooth'})
+        if (!scrollElement.current) return;
+        
+        const container = scrollElement.current;
+        const scrollLeft = container.scrollLeft;
+        
+        // Проверяем, можем ли прокрутить влево
+        if (scrollLeft <= 15) {
+            return; // Уже в начале, не прокручиваем
+        }
+        
+        // Ограничиваем прокрутку, чтобы не выйти за пределы
+        const nextScroll = Math.max(scrollLeft - 300, 0);
+        
+        container.scrollTo({ left: nextScroll, behavior: 'smooth'})
         setTimeout(() => {
             checkScrollPosition()
         }, 300)
@@ -65,6 +96,21 @@ const NewsButtons = ({ selectedHashtags, setSelectedHashtags, hashtags: hashtags
 
     React.useEffect(() => {
         checkScrollPosition();
+        
+        // Добавляем обработчик события scroll для более точного отслеживания
+        const container = scrollElement.current;
+        if (container) {
+            container.addEventListener('scroll', checkScrollPosition);
+            // Также проверяем при изменении размера окна
+            window.addEventListener('resize', checkScrollPosition);
+        }
+        
+        return () => {
+            if (container) {
+                container.removeEventListener('scroll', checkScrollPosition);
+                window.removeEventListener('resize', checkScrollPosition);
+            }
+        };
     }, []);
 
     return (
@@ -81,8 +127,10 @@ const NewsButtons = ({ selectedHashtags, setSelectedHashtags, hashtags: hashtags
                  lg:w-auto lg:block
                     [&::-webkit-scrollbar]:hidden
                     [-ms-overflow-style:none]
-                    [scrollbar-width:none]"
+                    [scrollbar-width:none]
+                    overflow-x-scroll"
                 ref={scrollElement}
+                style={{ scrollBehavior: 'smooth' }}
             >
                 {hashtags.map((btn, index) => (
                     <Button

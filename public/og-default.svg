@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">'5;O18=A:89 3>@>4A:>9 !>25B 25B5@0=>2</title>
+  <desc id="desc">0==5@ A09B0 '5;O18=A:>3> 3>@>4A:>3> !>25B0 25B5@0=>2</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b3b2e"/>
+      <stop offset="50%" stop-color="#145c3b"/>
+      <stop offset="100%" stop-color="#0b3b2e"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="180" cy="315" r="110" fill="#f4e4c8" stroke="#ffffff" stroke-width="6" opacity="0.95"/>
+  <circle cx="180" cy="315" r="80" fill="#d9c7a2" opacity="0.9"/>
+
+  <g fill="#ffffff">
+    <path d="M140 290h80v14h-80z" opacity="0.9"/>
+    <path d="M152 312h56v12h-56z" opacity="0.95"/>
+    <path d="M160 334h40v10h-40z" opacity="0.95"/>
+  </g>
+
+  <text x="330" y="260" fill="#ffffff" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="34" font-weight="600" letter-spacing="0.06em" text-transform="uppercase">
+    '5;O18=A:89 3>@>4A:>9
+  </text>
+  <text x="330" y="320" fill="#ffffff" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="60" font-weight="700">
+    !>25B 25B5@0=>2
+  </text>
+  <text x="330" y="372" fill="#e4f2ec" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="24">
+    >2>AB8, <5@>?@8OB8O, @09>==K5 >B45;5=8O, >1@0I5=8O 3@0640=
+  </text>
+
+  <rect x="330" y="410" rx="26" ry="26" width="330" height="52" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.55)" stroke-width="2"/>
+  <text x="346" y="444" fill="#ffffff" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="22">
+    A>25B25B5@0=>274.@D
+  </text>
+</svg>
+

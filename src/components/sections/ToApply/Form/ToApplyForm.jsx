@@ -125,7 +125,7 @@ const ToApplyForm = () => {
 
                 <p
                     className="
-                    text-[15px] text-red-600 mt-3
+                    text-[15px] text-red-600 mt-3 text-center
                     max-md:text-sm
                 "
                 >

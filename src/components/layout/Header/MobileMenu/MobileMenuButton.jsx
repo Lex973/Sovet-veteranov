@@ -9,7 +9,7 @@ const MobileMenuButton = ({children, onClick}) => {
 
     return (
         <button
-            className="cursor-pointer w-full text-left h-10"
+            className="cursor-pointer w-full text-left h-10 text-green-600 font-medium"
             onClick={handleClick}
         >
             {children}

@@ -4,3 +4,4 @@ sqlalchemy==2.0.36
 aiogram==3.15.0
 python-multipart==0.0.17
 pydantic-settings==2.6.1
+httpx==0.28.1

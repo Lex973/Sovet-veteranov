@@ -14,7 +14,13 @@ class Settings(BaseSettings):
     database_url: str = _DEFAULT_DB
     telegram_bot_token: str | None = None
     telegram_chat_id: str | None = None
+    # Канал для дублирования новостей (например @sovetveteranov74 или -100xxxxxxxxxx)
+    telegram_channel: str | None = None
     admin_password: str = ""
+    # Ссылка на сайт для сообщений в боте (админка = site_url + /admin)
+    site_url: str = "https://xn--74-6kchabsba5fehxhsc.xn--p1ai"
+    # URL бэкенда для вызовов API из бота (создание новостей, загрузка фото)
+    api_base_url: str = "http://127.0.0.1:8000"
 
     class Config:
         env_file = str(_BACKEND_DIR / ".env")

@@ -22,6 +22,7 @@ mkdir -p /opt/sovet-veteranov/backend /opt/sovet-veteranov/frontend
 # С вашего ПК (PowerShell, в корне проекта):
 scp deploy/nginx.conf root@90.156.227.169:/etc/nginx/sites-available/sovet-veteranov
 scp deploy/sovet-veteranov.service root@90.156.227.169:/etc/systemd/system/
+scp deploy/sovet-veteranov-bot.service root@90.156.227.169:/etc/systemd/system/
 ```
 
 На сервере:
@@ -30,6 +31,8 @@ ln -sf /etc/nginx/sites-available/sovet-veteranov /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
 nginx -t && systemctl reload nginx
 systemctl daemon-reload
+systemctl enable sovet-veteranov-bot
+systemctl start sovet-veteranov-bot
 ```
 
 ---
@@ -74,10 +77,12 @@ pip install -r requirements.txt
 nano .env
 ```
 
-Запуск/перезапуск API:
+Запуск/перезапуск API и бота:
 ```bash
 systemctl restart sovet-veteranov
 systemctl status sovet-veteranov
+systemctl restart sovet-veteranov-bot
+systemctl status sovet-veteranov-bot
 ```
 
 Проверка сайта: откройте в браузере http://советветеранов74.рф (или http://90.156.227.169).

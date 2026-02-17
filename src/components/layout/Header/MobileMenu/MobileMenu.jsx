@@ -4,6 +4,9 @@ import MobileMenuButton from "./MobileMenuButton.jsx";
 const MobileMenu = ({setModalWindow, onClick, isOpen}) => {
     const menuItems = ['Главная', 'Новости', 'Команда', 'Обратиться', 'Районные отделения'];
     const handleItemClick = (element) => {
+        // Закрываем меню перед навигацией
+        setModalWindow(false);
+        // Вызываем обработчик навигации
         onClick(element);
     };
 

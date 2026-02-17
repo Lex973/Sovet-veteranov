@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Главная страница -->
+  <url>
+    <loc>https://xn--74-6kchabsba5fehxhsc.xn--p1ai/</loc>
+  </url>
+  <!-- Раздел новостей (основной контент сайта) -->
+  <url>
+    <loc>https://xn--74-6kchabsba5fehxhsc.xn--p1ai/#news</loc>
+  </url>
+  <!-- Команда -->
+  <url>
+    <loc>https://xn--74-6kchabsba5fehxhsc.xn--p1ai/#team</loc>
+  </url>
+  <!-- Районные отделения / контакты -->
+  <url>
+    <loc>https://xn--74-6kchabsba5fehxhsc.xn--p1ai/#districts</loc>
+  </url>
+  <!-- Обратиться (форма обращений) -->
+  <url>
+    <loc>https://xn--74-6kchabsba5fehxhsc.xn--p1ai/#to-apply</loc>
+  </url>
+</urlset>
+

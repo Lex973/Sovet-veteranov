@@ -2,8 +2,11 @@
 .header {
   background: linear-gradient(135deg, #0b3b2e 0%, #145c3b 50%, #0b3b2e 100%);
   color: #fff;
-  position: relative;
-  z-index: 50;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   box-shadow: 0 2px 12px rgba(11, 59, 46, 0.25);
 }
 
@@ -16,11 +19,12 @@
 }
 
 .header.sticky {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  z-index: 100;
   transition: box-shadow 0.2s ease;
+}
+
+/* Единый размер названий разделов в шапке */
+.header-nav-btn {
+  font-size: 1rem;
+  line-height: 1.5;
 }

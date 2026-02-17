@@ -1,0 +1,23 @@
+# Systemd unit для Telegram-бота (Совет ветеранов)
+# Разместить: /etc/systemd/system/sovet-veteranov-bot.service
+# Действия:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable sovet-veteranov-bot
+#   sudo systemctl start sovet-veteranov-bot
+#   sudo systemctl status sovet-veteranov-bot
+
+[Unit]
+Description=Sovet Veteranov 74 Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/sovet-veteranov/backend
+Environment="PATH=/opt/sovet-veteranov/backend/venv/bin"
+ExecStart=/opt/sovet-veteranov/backend/venv/bin/python -m bot.main
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

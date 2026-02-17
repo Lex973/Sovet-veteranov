@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { API_BASE } from "../../../api/config.js";
+import ImageModal from "../../ui/ImageModal/ImageModal.jsx";
 
 const imageSrc = (url) => {
   if (!url) return "";
@@ -8,10 +9,33 @@ const imageSrc = (url) => {
 
 const NewsElement = ({ props }) => {
   const [imageErrors, setImageErrors] = useState({});
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
   const allImages = (props.images && props.images.length) ? props.images : (props.image ? [props.image] : []);
   const mainImage = props.image || allImages[0] || "";
   const otherImages = allImages.length > 1 ? allImages.slice(1) : [];
   const galleryUrls = otherImages.slice(0, 9);
+  
+  // Все изображения для модального окна
+  const allImageUrls = allImages.map(img => imageSrc(img)).filter(Boolean);
+  
+  const openModal = (index) => {
+    setCurrentImageIndex(index);
+    setModalOpen(true);
+  };
+  
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+  
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % allImageUrls.length);
+  };
+  
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + allImageUrls.length) % allImageUrls.length);
+  };
 
   const setError = (key) => {
     setImageErrors((prev) => ({ ...prev, [key]: true }));
@@ -19,7 +43,7 @@ const NewsElement = ({ props }) => {
 
   return (
     <div className="mb-14 flex flex-col gap-4 w-full">
-      <h2 className="text-[#0b3b2e] text-xl md:text-2xl font-semibold mb-1">{props.title}</h2>
+      <h2 className="text-[#0b3b2e] text-2xl md:text-3xl font-semibold mb-1">{props.title}</h2>
 
       {/* Главное фото */}
       {mainImage && (
@@ -31,8 +55,9 @@ const NewsElement = ({ props }) => {
           <img
             src={imageSrc(mainImage)}
             alt={props.title}
-            className="w-full object-cover rounded-xl max-h-[420px]"
+            className="w-full object-cover rounded-xl max-h-[420px] cursor-pointer hover:opacity-90 transition-opacity"
             onError={() => setError("main")}
+            onClick={() => openModal(0)}
           />
         )
       )}
@@ -50,8 +75,9 @@ const NewsElement = ({ props }) => {
                 key={i}
                 src={imageSrc(url)}
                 alt={`${props.title} — фото ${i + 2}`}
-                className="w-full aspect-video object-cover rounded-lg"
+                className="w-full aspect-video object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
                 onError={() => setError(`gallery-${i}`)}
+                onClick={() => openModal(i + 1)}
               />
             )
           )}
@@ -59,7 +85,7 @@ const NewsElement = ({ props }) => {
       )}
 
       {props.subtitle && (
-        <p className="text-xl md:text-xl lg:text-2xl xl:text-2xl 2xl:text-2xl">{props.subtitle}</p>
+        <p className="text-xl md:text-2xl lg:text-2xl text-gray-700 leading-relaxed">{props.subtitle}</p>
       )}
 
       {/* Основной текст с форматированием (HTML) */}
@@ -72,8 +98,8 @@ const NewsElement = ({ props }) => {
 
       <div className="flex items-center gap-5">
         <div>
-          <span className="text-md md:text-xl lg:text-xl xl:text-xl">{props.date}</span>
-          <strong className="ml-[5px] text-[#0b3b2e] font-medium text-md md:text-xl lg:text-xl xl:text-xl">
+          <span className="text-lg md:text-xl">{props.date}</span>
+          <strong className="ml-[5px] text-[#0b3b2e] font-medium text-lg md:text-xl">
             {props.hashtag}
           </strong>
         </div>
@@ -81,6 +107,18 @@ const NewsElement = ({ props }) => {
           <div className="line w-full h-1 bg-[#1C1C1C]"></div>
         </div>
       </div>
+      
+      {/* Модальное окно для просмотра фотографий */}
+      {allImageUrls.length > 0 && (
+        <ImageModal
+          images={allImageUrls}
+          currentIndex={currentImageIndex}
+          isOpen={modalOpen}
+          onClose={closeModal}
+          onNext={nextImage}
+          onPrev={prevImage}
+        />
+      )}
     </div>
   );
 };

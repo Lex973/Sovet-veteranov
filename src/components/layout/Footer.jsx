@@ -33,11 +33,13 @@ const Footer = ({ setCurrentPage }) => {
                 ">
           <nav>
             <p className="text-sm sm:text-lg lg:text-2xl mb-2">Навигация:</p>
-            <ul className="flex flex-col gap-1 sm:gap-2 text-xs sm:text-base lg:text-xl">
+            <ul className="flex flex-col gap-1 sm:gap-2 text-xs sm:text-base lg:text-xl items-start">
               {menuItems.map((item) => (
-                <HeaderButton key={item} onClick={() => setCurrentPage(item)}>
-                  {item}
-                </HeaderButton>
+                <li key={item} className="w-full">
+                  <HeaderButton onClick={() => setCurrentPage(item)}>
+                    {item}
+                  </HeaderButton>
+                </li>
               ))}
             </ul>
           </nav>
