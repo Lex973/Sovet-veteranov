@@ -3,7 +3,7 @@ import HeaderButton from "../HeaderButton.jsx";
 import BurgerButton from "./BurgerButton.jsx";
 import MobileMenu from "./MobileMenu/MobileMenu.jsx";
 import "./header.css";
-import logoImage from "../../../../photo_2026-02-09_12-31-48.jpg";
+import logoImage from "../../../../logo.png";
 
 const Header = ({ setCurrentPage }) => {
   const menuItems = ["Главная", "Новости", "Команда", "Обратиться", "Районные отделения"];
